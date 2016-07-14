@@ -1,10 +1,21 @@
 use PDL::Core::Dev;
-use ExtUtils::MakeMaker;
+use inc::Module::Install;
 
 use File::Spec::Functions qw( catfile );
 
 use strict;
 use warnings;
+
+name 'CXC-PDL-Bin1D';
+
+license 'gpl3';
+auto_license( holder => 'Smithsonian Astrophysical Observatory' );
+all_from 'lib/CXC/PDL/Bin1D.pd';
+
+provides 'CXC::PDL::Bin1D' => { file => 'lib/CXC/PDL/Bin1D.pd',
+				version => version(),
+			      };
+
 
 our @dirh = qw( lib CXC PDL );
 
@@ -17,9 +28,9 @@ our $deps = join(' ', @deps );
 our @pprec = ( catfile( @dirh, 'Bin1D.pd'), 'Bin1D', 'CXC::PDL::Bin1D' );
 my %args = pdlpp_stdargs(\@pprec);
 
-$args{VERSION_FROM} = catfile( @dirh, 'Bin1D.pd' );
+makemaker_args( %args );
 
-WriteMakefile( %args );
+WriteAll;
 
 sub MY::postamble {
     my $postamble = pdlpp_postamble(\@::pprec);
