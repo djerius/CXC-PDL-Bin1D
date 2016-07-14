@@ -12,6 +12,10 @@ license 'gpl3';
 auto_license( holder => 'Smithsonian Astrophysical Observatory' );
 all_from 'lib/CXC/PDL/Bin1D.pd';
 
+author_tests( 'xt' );
+
+cpanfile;
+
 provides 'CXC::PDL::Bin1D' => { file => 'lib/CXC/PDL/Bin1D.pd',
 				version => version(),
 			      };
