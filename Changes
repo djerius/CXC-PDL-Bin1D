@@ -1,5 +1,12 @@
 Revision history for CXC-PDL-Bin1D
 
+0.13   2016-07-14T13:48:21-0400
+
+   [ENHANCEMENT]
+
+     * improve CPAN metadata so that the module is found (there is no
+       .pm file to scan, so it doesn't find a module)
+
 0.12   Fri Apr 24 16:32:15 EDT 2009
        - bin_err bin folding is now optional
 
