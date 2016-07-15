@@ -34,13 +34,11 @@ my %args = pdlpp_stdargs(\@pprec);
 
 makemaker_args( %args );
 
+my $postamble = pdlpp_postamble(\@::pprec);
+
+# make Bin1D.pm depend upon all of its included files
+$postamble =~ s/^(Bin1D.pm:.*)/$1 $::deps/m;
+
+postamble( $postamble );
+
 WriteAll;
-
-sub MY::postamble {
-    my $postamble = pdlpp_postamble(\@::pprec);
-
-    # make Bin1D.pm depend upon all of its included files
-    $postamble =~ s/^(Bin1D.pm:.*)/$1 $::deps/m;
-
-    return $postamble;
-}
